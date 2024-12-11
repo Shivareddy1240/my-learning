@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Profile from "./Profile";
+import { data } from "./data";
+import { commentData } from "./data";
+import ListItem from "./ListItem";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// const App = () => {
+//     return(
+//     <section className="posts-container">
+//        {
+//         data.map((eachObj)=>{
+//             const {id,thumbnailUrl,title,url} = eachObj;
+//             return <Profile key={id} id={id} thumbnailUrl={thumbnailUrl} title={title} url={url}></Profile>
+//         })
+//        }
+//     </section>   
+//     ) 
+// }
 
+const App = () =>{
+    return(
+        <main className="container">
+            <ul className="comments-container">
+
+          {
+            commentData.map((eachComment)=>{
+                const {id,email,name,body} = eachComment;
+               return (
+                <ListItem key={id} id={id} email={email} name={name} body={body}></ListItem>
+               ); 
+            })} 
+            </ul>
+        </main>
+    );
+};
 export default App;
